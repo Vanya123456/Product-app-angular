@@ -29,8 +29,12 @@ public class ProductService {
         productRepository.getProducts().removeIf(product -> product.getId().equals(id));
     }
 
-    public void addProductById(Product product) {
+    public void addProduct(Product product) {
         productRepository.getProducts().add(product);
     }
 
+    public void changeCost(Long productId, Integer delta) {
+        Product product = productRepository.findProductById(productId);
+        product.setCost(product.getCost() + delta);
+    }
 }
